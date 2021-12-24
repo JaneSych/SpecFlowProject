@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.Threading;
+using SeleniumExtras.WaitHelpers;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 using OpenQA.Selenium.Interactions;
@@ -24,19 +26,19 @@ namespace SpecFlowProject
         [FindsBy(How = How.LinkText, Using = "Create new")]
         private IWebElement createBtn;
 
-        public ProductBL createNewProduct()
+        public ProductPage createNewProduct()
         {
             createBtn.Click();
 
-            return new ProductBL(driver);
+            return new ProductPage(driver);
         }
 
-        public ProductBL goToProductPage(string name)
+        public ProductPage goToProductPage(string name)
         {
             IWebElement product = driver.FindElement(By.LinkText(name)); 
             product.Click();
 
-            return new ProductBL(driver);
+            return new ProductPage(driver);
         }
 
         public void deleteProduct(string name)

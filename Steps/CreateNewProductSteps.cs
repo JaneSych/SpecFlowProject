@@ -28,9 +28,7 @@ namespace SpecFlowProject
         {
             ProductObj product = new ProductObj(Name, Category, Supplier, UnitPrice, Quantity, UnitsInStock, UnitsOnOrder, Discontinued);
 
-            MainPage mainPage = new MainPage(driver);
-            ProductsListPage productsListPage = mainPage.goToProductsListPage();
-            ProductBL productPage = productsListPage.createNewProduct();
+            ProductBL productPage = new ProductBL(driver);
             productPage.createNewProduct(product);
         }
         
